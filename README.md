@@ -18,7 +18,7 @@ Minimal Waybar configuration for Linux.
 
 ## Screenshot
 
-![screenshot](screenshot.png)
+![screenshot](screenshot.jpg)
 
 ## Included
 
