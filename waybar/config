@@ -56,7 +56,7 @@
 
 
   "custom/cava": {
-    "exec": "/home/riu/.config/waybar/scripts/cava.sh",
+    "exec": "bash $HOME/.config/waybar/scripts/cava.sh",
     "format": "{}",
     "return-type": "text",
     "restart-interval": 1,
@@ -64,7 +64,7 @@
   },
 
   "custom/sys_bars":{
-    "exec": "/home/riu/.config/waybar/scripts/cpu_bar.sh",
+    "exec": "bash $HOME/.config/waybar/scripts/cpu_bar.sh",
     "interval": 2,
     "return-type": "json",
     "tooltip": false
@@ -72,7 +72,7 @@
 
 
   "custom/bluetooth": {
-    "exec": "/home/riu/.config/waybar/scripts/bluetooth.sh",
+    "exec": "bash $HOME/.config/waybar/scripts/bluetooth.sh",
     "interval": 3,
     "format": "{}",
     "tooltip": false,
@@ -83,7 +83,7 @@
 
 
   "custom/wifi": {
-    "exec": "/home/riu/.config/waybar/scripts/wifi.sh",
+    "exec": "bash $HOME/.config/waybar/scripts/wifi.sh",
     "interval": 3,
     "return-type": "json",
     "format": "{}",
