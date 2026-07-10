@@ -1,0 +1,112 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 40,
+
+  "modules-left": ["custom/menu", "clock", "custom/ping", "tray", "custom/music"],
+  "modules-center": ["sway/workspaces"],
+  "modules-right": ["custom/cava", "custom/language", "custom/sys_bars", "custom/bluetooth", "custom/wifi", "battery"],
+
+  "custom/menu": {
+    "format": "",
+    "on-click": "wofi --show drun"
+  },
+
+  "clock": {
+    "format": "{:%I:%M:%S %p}",
+    "tooltip-format": "{:%d.%m.%Y}"
+  },
+
+  "custom/ping": {
+    "exec": "ping -c 1 -W 1 1.1.1.1 | awk -F'time=' '/time=/{split($2,a,\" \"); print \"  \" int(a[1]) \"ms\"; ok=1} END{if(!ok) print \"  down\"}'",
+    "interval": 2
+  },
+
+  "tray": {
+    "icon-size": 16,
+    "spacing": 8
+  },
+
+  "custom/music": {
+    "exec": "playerctl metadata --format '{{artist}} - {{title}}' 2>/dev/null || echo no music",
+    "interval": 2
+  },
+
+  "sway/workspaces": {
+    "all-outputs": true,
+    "persistent-workspaces":{
+      "1": [],
+      "2": [],
+      "3": [],
+      "4": [],
+      "5": []
+    },
+    "format": "{icon}",
+    "format-icons": {
+      "1": "●",
+      "2": "●",
+      "3": "●",
+      "4": "●",
+      "5": "●",
+      "urgent": "●",
+      "focused": "●",
+      "default": "●"
+    }
+  },
+
+
+  "custom/cava": {
+    "exec": "/home/riu/.config/waybar/scripts/cava.sh",
+    "format": "{}",
+    "return-type": "text",
+    "restart-interval": 1,
+    "tooltip": false
+  },
+
+  "custom/language": {
+    "exec": "swaymsg -t get_inputs | jq -r '.[] | select(.type==\"keyboard\") | .xkb_active_layout_name' | head -n1 | awk '{print ($0 ~ /Russian/ ? \"RU\" : \"EN\")}'",
+    "interval": 1,
+    "format": "{}",
+    "tooltip": false
+  },
+
+  "custom/sys_bars":{
+    "exec": "/home/riu/.config/waybar/scripts/cpu_bar.sh",
+    "interval": 2,
+    "return-type": "json",
+    "tooltip": false
+  },
+
+
+  "custom/bluetooth": {
+    "exec": "/home/riu/.config/waybar/scripts/bluetooth.sh",
+    "interval": 3,
+    "format": "{}",
+    "tooltip": false,
+    "on-click": "blueman-manager",
+    "on-click-right": "bluetoothctl power off",
+    "on-click-middle": "bluetoothctl power on"
+  },
+
+
+  "custom/wifi": {
+    "exec": "/home/riu/.config/waybar/scripts/wifi.sh",
+    "interval": 3,
+    "return-type": "json",
+    "format": "{}",
+    "on-click": "iwgtk"
+  },
+
+  "battery": {
+    "format": " {capacity}%"
+  },
+
+  "pulseaudio": {
+    "format": " {volume}%",
+    "format-muted": " muted",
+    "on-click": "/home/riu/.config/waybar/scripts/audio-menu.sh",
+    "on-click-right": "pavucontrol",
+    "scroll-step": 5
+  }
+}
+
